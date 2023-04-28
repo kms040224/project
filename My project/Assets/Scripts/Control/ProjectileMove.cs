@@ -33,4 +33,23 @@ public class ProjectileMove : MonoBehaviour
         }
 
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Wall")               //벽에 충돌이 일어났을 때
+        {
+            GameObject temp = this.gameObject;                  //나 자신을 가져와서 temp 에 입력한다.
+            Destroy(temp);                                      //곧바로 파괴한다.
+
+        }
+        if (other.gameObject.tag == "Monster")             //몬스터와 충돌이 일어났을때
+
+
+        {
+            other.gameObject.GetComponent<MonsterController>().Monster_Damaged(1);
+            GameObject temp = this.gameObject;                  //나 자신을 가져와서 temp 에 입력한다.
+            Destroy(temp);                                      //곧바로 파괴한다.
+
+        }
+
+    }
 }
